@@ -1,12 +1,14 @@
+var gridLength = 104
+var generalClassName = "SubDiv"
+var gridStatePosition = generateArrayStats(gridLength)
+
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Load the page")
 
-    var gridLength = 104
-    var gridStatePosition = generateArrayStats(gridLength)
+    
+    console.log(gridStatePosition)
 
     createSmallBoxs(gridLength)
-    console.log(gridStatePosition)
-    
     addClickListenner()
 });
 
@@ -15,8 +17,9 @@ function createSmallBoxs(amount) {
 
     for (var i = 0; i <= amount; i++) {
         var div = document.createElement("div");
-        div.className = "SubDiv";
+        div.className = generalClassName;
         div.id = i
+
         section.appendChild(div)
     }
 }
@@ -24,22 +27,27 @@ function createSmallBoxs(amount) {
 function generateArrayStats(arraySize) {
     var array = []
     for (var i = 0; i <= arraySize; i++) {
-        array.push("false")
+        array.push(false)
     }
     return array
 }
 
 function addClickListenner() {
-    var generalClassName = "SubDiv"
     var divs = document.querySelectorAll("." + generalClassName);
     
     divs.forEach(function(div) {
         div.addEventListener("click", function() {
             if (String(this.className).includes("true")) {
                 this.className = generalClassName + " false"
+                setState(this.id, false)
             } else {
                 this.className = generalClassName + " true"
+                setState(this.id, true)
             }
         });
     });
+}
+
+function setState(position, state) {
+    gridStatePosition[position] = state
 }
