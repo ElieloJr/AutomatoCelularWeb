@@ -5,9 +5,6 @@ var gridStatePosition = generateArrayStats(gridLength)
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Load the page")
 
-    
-    console.log(gridStatePosition)
-
     createSmallBoxs(gridLength)
     addClickListenner()
 });
@@ -51,3 +48,17 @@ function addClickListenner() {
 function setState(position, state) {
     gridStatePosition[position] = state
 }
+
+function run() {
+    // TODO: Não permitir que itens sejam clicados
+    console.log('funciona')
+
+    // Menos de 2 viznhos - MORRE
+    
+    // 2 ou 3 vizinhos - VIVE
+
+    // 3 vizinhos - NASCE
+
+    // Mais de 3 vizinhos - MORRE
+}
+

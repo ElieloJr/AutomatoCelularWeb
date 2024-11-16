@@ -1,9 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+    /* display: flex; 
+    justify-content: center;
+    align-items: center; */
 }
 
 h1 {
@@ -18,6 +18,10 @@ h1 {
 
 .automato01 {
     background-color: red;
+    margin: 50rem;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
 }
 
 #rectangle {
@@ -47,4 +51,16 @@ h1 {
 
 .false {
     background-color: red;
+}
+
+button {
+    margin-top: 1rem;
+    width: 16rem; 
+    height: 4rem;
+    border-radius: 2rem;
+    justify-content: center;
+    background: #1c329f;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    border: none;
 }
