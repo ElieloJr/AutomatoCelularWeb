@@ -19,7 +19,7 @@ h1 {
 .automato01 {
     background-color: red;
     margin: 50rem;
-    display: flex; 
+    display: flex;
     flex-direction: column; 
     align-items: center;
 }
@@ -27,13 +27,14 @@ h1 {
 #rectangle {
     background-color: blue;
     width: 300rem; 
-    height: 220px;
+    height: 50%;
     
     display: flex; 
     flex-wrap: wrap;
     max-width: 30rem; 
     /* Defina o tamanho máximo aqui */ 
     background-color: lightgray; 
+    justify-content: center;
     padding: 2px; 
     gap: 2px;
 }

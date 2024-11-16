@@ -1,4 +1,4 @@
-var gridLength = 104
+var gridLength = 224
 var generalClassName = "SubDiv"
 var gridStatePosition = generateArrayStats(gridLength)
 
@@ -47,14 +47,28 @@ function addClickListenner() {
 
 function setState(position, state) {
     gridStatePosition[position] = state
+    console.log(position)
 }
 
 function run() {
     // TODO: Não permitir que itens sejam clicados
     console.log('funciona')
 
+    // POS | x = 16
+
+    // Esquerda | x - 1
+    // Direita | x + 1
+
+    // Cima DIREITA | x - 14
+    // Cima CENTRO | x - 15
+    // Cima ESQUERDA | x - 16
+
+    // Baixo DIREITA | x + 16
+    // Baixo CENTRO | x + 15
+    // Baixo ESQUERDA | x + 14
+
     // Menos de 2 viznhos - MORRE
-    
+
     // 2 ou 3 vizinhos - VIVE
 
     // 3 vizinhos - NASCE
