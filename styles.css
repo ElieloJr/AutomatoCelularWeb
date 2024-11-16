@@ -1,10 +1,42 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
 }
 
 h1 {
     color: #333;
     text-align: center;
-    font-style: uppercase;
+    text-transform: uppercase;
+}
+
+.about {
+    visibility: hidden;
+}
+
+.automato01 {
+    background-color: red;
+}
+
+#rectangle {
+    background-color: blue;
+    width: 300rem; 
+    height: 220px;
+    
+    display: flex; 
+    flex-wrap: wrap;
+    max-width: 30rem; 
+    /* Defina o tamanho máximo aqui */ 
+    background-color: lightgray; 
+    padding: 2px; 
+    gap: 2px;
+}
+
+.SubDiv {
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    margin: 0.00001rem;
 }
