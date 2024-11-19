@@ -55,17 +55,45 @@ function run() {
     console.log('funciona')
 
     // POS | x = 16
+    var x = 29
 
     // Esquerda | x - 1
+    if (leftIsValid(x)) {
+        gridStatePosition[x - 1] = true
+        console.log(x)
+        console.log(gridStatePosition)
+    }
+    
     // Direita | x + 1
+    if (rightIsValid(x)) {
+        gridStatePosition[x + 1] = true
+    }
 
     // Cima DIREITA | x - 14
+    if (upIsValid(x) && rightIsValid(x)) {
+        gridStatePosition[x - 14] = true
+    }
     // Cima CENTRO | x - 15
+    if (upIsValid(x)) {
+        gridStatePosition[x - 15] = true
+    }
     // Cima ESQUERDA | x - 16
+    if (upIsValid(x) && leftIsValid(x)) {
+        gridStatePosition[x - 16] = true
+    }
 
     // Baixo DIREITA | x + 16
+    if (downIsValid(x) && rightIsValid(x)) {
+        gridStatePosition[x + 16] = true
+    }
     // Baixo CENTRO | x + 15
+    if (downIsValid(x)) {
+        gridStatePosition[x + 15] = true
+    }
     // Baixo ESQUERDA | x + 14
+    if (downIsValid(x) && leftIsValid(x)) {
+        gridStatePosition[x + 14] = true
+    }
 
     // Menos de 2 viznhos - MORRE
 
@@ -76,3 +104,44 @@ function run() {
     // Mais de 3 vizinhos - MORRE
 }
 
+function rightIsValid(position) {
+    var notHaveRight = [14, 29, 44, 59, 74, 89, 104, 119, 134, 149, 164, 179, 194, 209, 224]
+    var isValid = true
+    for (var i = 0; i<=(notHaveRight.length-1); i++) {
+        if (position == notHaveRight[i]) {
+            isValid = false
+        }
+    }
+    console.log("rightIsValid " + isValid)
+    return isValid
+}
+
+function leftIsValid(position) {
+    var notHaveLeft = [0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210]
+    var isValid = true
+    for (var i = 0; i<=(notHaveLeft.length-1); i++) {
+        if (position == notHaveLeft[i]) {
+            isValid = false
+        }
+    }
+    console.log("leftIsValid " + isValid)
+    return isValid
+}
+
+function upIsValid(position) {
+    if (position >= 0 &&  position <= 14) {
+        console.log("upIsValid " + false)
+        return false
+    }
+    console.log("upIsValid " + true)
+    return true
+}
+
+function downIsValid(position) {
+    if (position >= 210 && position <= 224) {
+        console.log("downIsValid " + false)
+        return false
+    }
+    console.log("downIsValid " + true)
+    return true
+}
