@@ -52,55 +52,73 @@ function setState(position, state) {
 
 function run() {
     // TODO: Não permitir que itens sejam clicados
-    console.log('funciona')
 
-    // POS | x = 16
-    var x = 29
-
-    // Esquerda | x - 1
-    if (leftIsValid(x)) {
-        gridStatePosition[x - 1] = true
-        console.log(x)
-        console.log(gridStatePosition)
+    // TODO: Pegar apenas campos igual a true/selecionados
+    chosePositions = []
+    for (var i = 0; i <= (gridStatePosition.length-1); i++) {
+        if (gridStatePosition[i]) chosePositions.push(i)
     }
+
+    console.log(chosePositions)
+    // ----------------
+
+
+    var endBoxState = []
+
+    // // POS | x = 16
+    // var x = 14
+
+    // // Esquerda | x - 1
+    // if (leftIsValid(x)) {
+    //     gridStatePosition[x - 1] = true
+    //     console.log(x)
+    //     console.log(gridStatePosition)
+    //     endBoxState.push(true)
+    // }
     
-    // Direita | x + 1
-    if (rightIsValid(x)) {
-        gridStatePosition[x + 1] = true
-    }
+    // // Direita | x + 1
+    // if (rightIsValid(x)) {
+    //     gridStatePosition[x + 1] = true
+    //     endBoxState.push(true)
+    // }
 
-    // Cima DIREITA | x - 14
-    if (upIsValid(x) && rightIsValid(x)) {
-        gridStatePosition[x - 14] = true
-    }
-    // Cima CENTRO | x - 15
-    if (upIsValid(x)) {
-        gridStatePosition[x - 15] = true
-    }
-    // Cima ESQUERDA | x - 16
-    if (upIsValid(x) && leftIsValid(x)) {
-        gridStatePosition[x - 16] = true
-    }
+    // // Cima DIREITA | x - 14
+    // if (upIsValid(x) && rightIsValid(x)) {
+    //     gridStatePosition[x - 14] = true
+    //     endBoxState.push(true)
+    // }
+    // // Cima CENTRO | x - 15
+    // if (upIsValid(x)) {
+    //     gridStatePosition[x - 15] = true
+    //     endBoxState.push(true)
+    // }
+    // // Cima ESQUERDA | x - 16
+    // if (upIsValid(x) && leftIsValid(x)) {
+    //     gridStatePosition[x - 16] = true
+    //     endBoxState.push(true)
+    // }
 
-    // Baixo DIREITA | x + 16
-    if (downIsValid(x) && rightIsValid(x)) {
-        gridStatePosition[x + 16] = true
-    }
-    // Baixo CENTRO | x + 15
-    if (downIsValid(x)) {
-        gridStatePosition[x + 15] = true
-    }
-    // Baixo ESQUERDA | x + 14
-    if (downIsValid(x) && leftIsValid(x)) {
-        gridStatePosition[x + 14] = true
-    }
+    // // Baixo DIREITA | x + 16
+    // if (downIsValid(x) && rightIsValid(x)) {
+    //     gridStatePosition[x + 16] = true
+    //     endBoxState.push(true)
+    // }
+    // // Baixo CENTRO | x + 15
+    // if (downIsValid(x)) {
+    //     gridStatePosition[x + 15] = true
+    //     endBoxState.push(true)
+    // }
+    // // Baixo ESQUERDA | x + 14
+    // if (downIsValid(x) && leftIsValid(x)) {
+    //     gridStatePosition[x + 14] = true
+    //     endBoxState.push(true)
+    // }
+
+    // console.log(endBoxState)
 
     // Menos de 2 viznhos - MORRE
-
     // 2 ou 3 vizinhos - VIVE
-
     // 3 vizinhos - NASCE
-
     // Mais de 3 vizinhos - MORRE
 }
 
