@@ -57,6 +57,9 @@ function setColorBoxs() {
         for (var i = 0; i<=(gridStatePosition.length-1); i++) {
             if (gridStatePosition[i] && div.id == i) {
                 div.className = generalClassName + " true"
+            } else if (!gridStatePosition[i] && div.id == i) {
+                div.className = generalClassName + " false"
+                setState(div.id, false)
             }
         }
     });
@@ -71,20 +74,52 @@ function getSelectedItens() {
     return chosePositions
 }
 
+function analiseOnlySelecteds() {
+    var selectedItens = getSelectedItens()
+    var perimeter
+    var analyzed 
+    for (var z=0; z <= (selectedItens.length-1); z++) {
+        analyzed = selectedItens[z]
+        perimeter = evaluatePerimeter(analyzed).length
+
+        if (perimeter < 2) {
+            gridStatePosition[analyzed] = false
+        } else if (perimeter == 2 || perimeter == 3) {
+            gridStatePosition[analyzed] = true
+        } else if (perimeter > 3) {
+            gridStatePosition[analyzed] = false
+        }
+    }
+    setColorBoxs()
+}
+
+function fullAnalise() {
+    var newMatriz = []
+    
+    for (var z=0; z <= (gridStatePosition.length-1); z++) {
+        var perimeter = evaluatePerimeter(z).length
+        var stateBox = gridStatePosition[z]
+
+        if (perimeter < 2) {
+            stateBox = false
+        } else if (perimeter == 2) {
+            stateBox = gridStatePosition[z]
+        } else if (perimeter == 3) {
+            stateBox = true
+        } else if (perimeter > 3) {
+            stateBox = false
+        }
+
+        newMatriz.push(stateBox)
+    }
+    gridStatePosition = newMatriz
+    setColorBoxs()
+}
+
 function run() {
     // TODO: Não permitir que itens sejam clicados
 
-    var selectedItens = getSelectedItens()
-    for (var z=0; z <= (selectedItens.length-1); z++) {
-        marcaOredor(selectedItens[z])
-        setColorBoxs()
-    }
-
-
-    // Menos de 2 viznhos - MORRE
-    // 2 ou 3 vizinhos - VIVE
-    // 3 vizinhos - NASCE
-    // Mais de 3 vizinhos - MORRE
+    fullAnalise()
 }
 
 function rightIsValid(position) {
@@ -95,7 +130,7 @@ function rightIsValid(position) {
             isValid = false
         }
     }
-    console.log("rightIsValid " + isValid)
+    
     return isValid
 }
 
@@ -107,73 +142,71 @@ function leftIsValid(position) {
             isValid = false
         }
     }
-    console.log("leftIsValid " + isValid)
+    
     return isValid
 }
 
 function upIsValid(position) {
     if (position >= 0 &&  position <= 14) {
-        console.log("upIsValid " + false)
         return false
     }
-    console.log("upIsValid " + true)
     return true
 }
 
 function downIsValid(position) {
     if (position >= 210 && position <= 224) {
-        console.log("downIsValid " + false)
         return false
     }
-    console.log("downIsValid " + true)
     return true
 }
 
-function marcaOredor(x) {
+function evaluatePerimeter(x) {
     var endBoxState = []
+
     // Esquerda | x - 1
     if (leftIsValid(x)) {
-        gridStatePosition[x - 1] = true
-        console.log(x)
-        console.log(gridStatePosition)
-        endBoxState.push(true)
+        if (gridStatePosition[x - 1]) 
+            endBoxState.push(true)
     }
     
     // Direita | x + 1
     if (rightIsValid(x)) {
-        gridStatePosition[x + 1] = true
-        endBoxState.push(true)
+        if (gridStatePosition[x + 1])
+            endBoxState.push(true)
     }
 
     // Cima DIREITA | x - 14
     if (upIsValid(x) && rightIsValid(x)) {
-        gridStatePosition[x - 14] = true
-        endBoxState.push(true)
+        if (gridStatePosition[x - 14])
+            endBoxState.push(true)
     }
     // Cima CENTRO | x - 15
     if (upIsValid(x)) {
-        gridStatePosition[x - 15] = true
-        endBoxState.push(true)
+        if (gridStatePosition[x - 15])
+            endBoxState.push(true)
     }
     // Cima ESQUERDA | x - 16
     if (upIsValid(x) && leftIsValid(x)) {
-        gridStatePosition[x - 16] = true
-        endBoxState.push(true)
+        if (gridStatePosition[x - 16])
+            endBoxState.push(true)
     }
 
     // Baixo DIREITA | x + 16
     if (downIsValid(x) && rightIsValid(x)) {
-        gridStatePosition[x + 16] = true
-        endBoxState.push(true)
+        if (gridStatePosition[x + 16])
+            endBoxState.push(true)
     }
     // Baixo CENTRO | x + 15
     if (downIsValid(x)) {
-        gridStatePosition[x + 15] = true
-        endBoxState.push(true)
+        if (gridStatePosition[x + 15])
+            endBoxState.push(true)
     }
     // Baixo ESQUERDA | x + 14
     if (downIsValid(x) && leftIsValid(x)) {
-        gridStatePosition[x + 14] = true
-        endBoxState.push(true)
-    }    
+        if (gridStatePosition[x + 14])
+            endBoxState.push(true)
+    }
+
+    console.log("-> ", endBoxState)
+    return endBoxState
 }
