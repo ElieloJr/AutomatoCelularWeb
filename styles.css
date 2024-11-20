@@ -40,18 +40,18 @@ h1 {
 }
 
 .SubDiv {
-    background-color: red;
+    background-color: gray;
     width: 30px;
     height: 30px;
     margin: 0.00001rem;
 }
 
 .true {
-    background-color: blue;
+    background-color: #1c329f;
 }
 
 .false {
-    background-color: red;
+    background-color: gray;
 }
 
 button {
