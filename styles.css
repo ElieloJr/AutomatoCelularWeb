@@ -65,3 +65,7 @@ button {
     text-transform: uppercase;
     border: none;
 }
+
+.clean {
+    width: 8rem;
+}
