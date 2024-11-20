@@ -15,3 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
 function runAutomato() {
     fullAnalise()
 }
+
+// Função que configura ação do botão "Limpar"
+function runRestart() {
+    gridStatePosition = generateArrayStats(gridLength)
+    setColorBoxs()
+}
