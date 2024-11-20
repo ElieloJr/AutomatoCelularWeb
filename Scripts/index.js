@@ -2,6 +2,7 @@ var gridLength = 224
 var generalClassName = "SubDiv"
 var gridStatePosition = generateArrayStats(gridLength)
 
+// FUNÇÃO QUE CONTROLA O HTML
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Load the page")
 
